@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/invites', function () {
-    return view('welcome');
+    return view('invites');
 });
