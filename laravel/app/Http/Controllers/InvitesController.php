@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\InvitesService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use stdClass;
 
 class InvitesController extends Controller
 {
-    public function index(): View
+    public function index(InvitesService $service): View
     {
-        $foo = new stdClass();
-        $foo->affiliate_id = null;
-        $foo->name = 'Yosef Giles';
-        $foo->latitude = null;
-        $foo->longitude = null;
-        $bar[] = $foo;
         return view('invites', [
-            'affiliateList' => $bar
+            'affiliateList' => $service->getInvites()
         ]);
     }
 }
