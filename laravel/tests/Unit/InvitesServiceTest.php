@@ -2,18 +2,17 @@
 
 namespace Tests\Unit;
 
+use App\Http\Services\InvitesService;
 use PHPUnit\Framework\TestCase;
-use app\Http\Controllers\InvitesController;
 
-class ExampleTest extends TestCase
+class InvitesServiceTest extends TestCase
 {
     /**
      * A basic test example.
      */
-    public function test_that_true_is_true(): void
+    public function test_that_class_exists(): void
     {
-        $sut  = new InvitesController();
-$sut->index()
-        $this->assertTrue(true);
+        $sut  = new InvitesService();
+        $this->assertTrue($sut instanceof InvitesService);
     }
 }
