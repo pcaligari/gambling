@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 class InvitesService
 {
     private $jsonObjects = [];
+    private $dublinLat = 53.3340285;
+    private $dublinLong = -6.2535495;
     /**
      * Create a new class instance.
      */
@@ -18,7 +20,14 @@ class InvitesService
     private function loadFromFile(): array
     {
         File::lines(storage_path('app/affiliates.txt'))->each(function ($line) {
-            $this->jsonObjects[] = json_decode($line);
+            $json = json_decode($line);
+            if (
+                floor(
+                    $this->greatCircleDistance($this->dublinLat, $this->dublinLong, $json->latitude, $json->longitude))
+                <= 100
+            ) {
+                $this->jsonObjects[$json->affiliate_id] = $json;
+            }
         });
 
        return $this->jsonObjects;
@@ -39,6 +48,7 @@ class InvitesService
     public function getInvites(): array
     {
         $affiliates = $this->loadFromFile();
+        ksort($affiliates);
         return $affiliates;
     }
 }

@@ -45,4 +45,16 @@ class AffiliateTest extends TestCase
             'Lance Keith'
         ]);
     }
+
+    #[Depends('test_the_invites_can_be_rendered')]
+    public function test_the_invites_table_is_sorted(TestResponse $response) :void
+    {
+        // Not the best test but it'll do to demonstrate the principle..
+        // Looking for an affiliate we know should be in the list to force us to
+        // add a list to the view - crappy but lets us make progress quickly
+        $response->assertSeeInOrder([
+            'Addison Lister',
+            'Yosef Giles'
+        ]);
+    }
 }
