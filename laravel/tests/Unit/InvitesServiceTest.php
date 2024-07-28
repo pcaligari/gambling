@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Http\Services\InvitesService;
+use App\Services\InvitesService;
 use PHPUnit\Framework\TestCase;
 
 class InvitesServiceTest extends TestCase
