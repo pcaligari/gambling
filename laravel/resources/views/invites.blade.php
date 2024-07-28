@@ -64,7 +64,16 @@
                                     <th>Long</th>
                                 </tr>
                             </thead>
-
+                            <tbody>
+                            @foreach( $affiliateList as $affiliate)
+                                <tr>
+                                    <td>{{$affiliate->affiliate_id}}</td>
+                                    <td>{{$affiliate->name}}</td>
+                                    <td>{{$affiliate->latitude}}</td>
+                                    <td>{{$affiliate->longitude}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                     </main>
 

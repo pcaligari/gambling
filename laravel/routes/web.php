@@ -7,5 +7,13 @@ Route::get('/', function () {
 });
 
 Route::get('/invites', function () {
-    return view('invites');
+    $foo = new stdClass();
+    $foo->affiliate_id = null;
+    $foo->name = 'Yosef Giles';
+    $foo->latitude = null;
+    $foo->longitude = null;
+    $bar[] = $foo;
+    return view('invites', [
+        'affiliateList' => $bar
+    ]);
 });
